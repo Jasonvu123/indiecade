@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private int lives = 10;
+    public string levelName;
 
     public int TotalLives { get; set; }
     public int CurrentWave { get; set; }

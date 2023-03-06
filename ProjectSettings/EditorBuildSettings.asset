@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TowerDefense.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 391d1e3ccda5c6a45b5484554ba7522a
+  - enabled: 1
     path: Assets/Scenes/SceneCopy1.unity
     guid: ec356eec4433d81468cf5bdf0e802364
   m_configObjects: {}
