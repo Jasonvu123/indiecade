@@ -25,7 +25,7 @@ public class Turret : MonoBehaviour
     private void Update()
     {
         GetCurrentEnemyTarget();
-        RotateTowardsTarget();
+        //RotateTowardsTarget();
     }
 
     private void GetCurrentEnemyTarget()
