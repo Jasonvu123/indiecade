@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
     
     [Header("Settings")]
     [SerializeField] private SpawnModes spawnMode = SpawnModes.Fixed;
-    [SerializeField] private int enemyCount = 10;
+    [SerializeField] public int enemyCount = 10;
     [SerializeField] private float delayBtwWaves = 1f;
 
     [Header("Fixed Delay")]
@@ -30,8 +30,10 @@ public class Spawner : MonoBehaviour
     [SerializeField] private ObjectPooler enemyWave1Pooler;
     [SerializeField] private ObjectPooler enemyWave2Pooler;
     [SerializeField] private ObjectPooler enemyWave3Pooler;
+    [SerializeField] private ObjectPooler enemyWave4Pooler;
+    [SerializeField] private ObjectPooler enemyWave5Pooler;
 
-    
+
     private float _spawnTimer;
     private int _enemiesSpawned;
     private int _enemiesRamaining;
@@ -108,7 +110,16 @@ public class Spawner : MonoBehaviour
         {
             return enemyWave3Pooler;
         }
-        
+        if (currentWave > 3 && currentWave <= 4) // 21- 30
+        {
+            enemyCount = 3;
+            return enemyWave4Pooler;
+        }
+        if (currentWave > 4 && currentWave <= 5) // 21- 30
+        {
+            enemyCount = 1;
+            return enemyWave5Pooler;
+        }
 
 
         return null;
@@ -142,5 +153,6 @@ public class Spawner : MonoBehaviour
     {
         Enemy.OnEndReached -= RecordEnemy;
         EnemyHealth.OnEnemyKilled -= RecordEnemy;
+        
     }
 }

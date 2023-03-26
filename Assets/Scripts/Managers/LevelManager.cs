@@ -11,7 +11,9 @@ public class LevelManager : Singleton<LevelManager>
 
     public int TotalLives { get; set; }
     public int CurrentWave { get; set; }
-    
+
+    [SerializeField] private Spawner WaveSpawner;
+
     private void Start()
     {
         TotalLives = lives;
@@ -42,15 +44,18 @@ public class LevelManager : Singleton<LevelManager>
 
     private void WaveCompleted()
     {
+        
         CurrentWave++;
-        if (CurrentWave == 10)
-            YouWin();
+        /*
+        if (CurrentWave == 4)
+            WaveSpawner.enemyCount = 1;
+            */
 
-        AchievementManager.Instance.AddProgress("Waves1", 1);
-        AchievementManager.Instance.AddProgress("Waves2", 1);
-        AchievementManager.Instance.AddProgress("Waves3", 1);
+        //AchievementManager.Instance.AddProgress("Waves1", 1);
+        // AchievementManager.Instance.AddProgress("Waves2", 1);
+        //AchievementManager.Instance.AddProgress("Waves3", 1);
     }
-    
+
     private void OnEnable()
     {
         Enemy.OnEndReached += ReduceLives;
