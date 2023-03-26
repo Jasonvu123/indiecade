@@ -13,6 +13,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject achievementPanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject shopButtonPanel;
 
     [Header("Text")] 
     [SerializeField] private TextMeshProUGUI upgradeText;
@@ -27,6 +28,8 @@ public class UIManager : Singleton<UIManager>
 
     private void Update()
     {
+        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
         totalCoinsText.text = CurrencySystem.Instance.TotalCoins.ToString();
         lifesText.text = LevelManager.Instance.TotalLives.ToString();
         currentWaveText.text = "Wave "+LevelManager.Instance.CurrentWave;
@@ -72,11 +75,6 @@ public class UIManager : Singleton<UIManager>
     public void OpenAchievementPanel(bool status)
     {
         achievementPanel.SetActive(status);
-    }
-    
-    public void CloseTurretShopPanel()
-    {
-        turretShopPanel.SetActive(false);
     }
 
     public void CloseNodeUIPanel()
@@ -124,6 +122,12 @@ public class UIManager : Singleton<UIManager>
         sellText.text = sellAmount.ToString();
     }
     
+    public void ToggleTurretShopView()
+    {
+        turretShopPanel.SetActive(!(turretShopPanel.activeSelf));
+        shopButtonPanel.SetActive(!(shopButtonPanel.activeSelf));
+    }
+
     private void NodeSelected(Node nodeSelected)
     {
         _currentNodeSelected = nodeSelected;

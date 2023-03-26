@@ -9,8 +9,6 @@ public class TurretShopManager : MonoBehaviour
 
     [Header("Turret Settings")]
     [SerializeField] private TurretSettings[] turrets;
-
-    private Node _currentNodeSelected;
     
     private void Start()
     {
@@ -30,40 +28,22 @@ public class TurretShopManager : MonoBehaviour
         cardButton.SetupTurretButton(turretSettings);
     }
     
-    private void NodeSelected(Node nodeSelected)
+    private void TurretSelected(TurretSettings turretLoaded)
     {
-        _currentNodeSelected = nodeSelected;
-    }
-    
-    private void PlaceTurret(TurretSettings turretLoaded)
-    {
-        if (_currentNodeSelected != null)
-        {
-            GameObject turretInstance = Instantiate(turretLoaded.TurretPrefab);
-            turretInstance.transform.localPosition = _currentNodeSelected.transform.position;
-            turretInstance.transform.parent = _currentNodeSelected.transform;
-
-            Turret turretPlaced = turretInstance.GetComponent<Turret>();
-            _currentNodeSelected.SetTurret(turretPlaced);
-        }
-    }
-
-    private void TurretSold()
-    {
-        _currentNodeSelected = null;
+        GameObject turretInstance = Instantiate(turretLoaded.TurretPrefab);
+        float zPosition = turretInstance.transform.position.z;
+        Vector3 MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        turretInstance.transform.position = new Vector3(MousePosition.x, MousePosition.y, zPosition);
+        
     }
     
     private void OnEnable()
     {
-        Node.OnNodeSelected += NodeSelected;
-        Node.OnTurretSold += TurretSold;
-        TurretCard.OnPlaceTurret += PlaceTurret;
+        TurretCard.OnPlaceTurret += TurretSelected;
     }
 
     private void OnDisable()
     {
-        Node.OnNodeSelected -= NodeSelected;
-        Node.OnTurretSold -= TurretSold;
-        TurretCard.OnPlaceTurret -= PlaceTurret;
+        TurretCard.OnPlaceTurret -= TurretSelected;
     }
 }

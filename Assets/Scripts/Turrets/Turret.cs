@@ -12,10 +12,15 @@ public class Turret : MonoBehaviour
     public float AttackRange => attackRange;
     
     private bool _gameStarted;
+    private bool _isBeingPlaced;
+    float zPosition;
     private List<Enemy> _enemies;
 
     private void Start()
     {
+        _isBeingPlaced = true;
+        zPosition = this.transform.position.z;
+
         _gameStarted = true;
         _enemies = new List<Enemy>();
 
@@ -24,8 +29,22 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        GetCurrentEnemyTarget();
-        //RotateTowardsTarget();
+        if (_isBeingPlaced)
+        {
+            
+            Vector3 MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            this.transform.position = new Vector3(MousePosition.x, MousePosition.y, zPosition);
+        }
+        else
+        {
+            GetCurrentEnemyTarget();
+            //RotateTowardsTarget();
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        _isBeingPlaced = false;
     }
 
     private void GetCurrentEnemyTarget()

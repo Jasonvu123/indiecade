@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 public class Node : MonoBehaviour
@@ -7,7 +7,7 @@ public class Node : MonoBehaviour
     public static Action OnTurretSold;
 
     [SerializeField] private GameObject attackRangeSprite;
-    
+
     public Turret Turret { get; set; }
 
     private float _rangeSize;
