@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092b71118b5da07438c8ee41a79c1772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 4
+  attackRange: 5
 --- !u!114 &5806130470888849858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 5806130470985952221}
   delayBtwAttacks: 0.6
-  damage: 1
+  damage: 4
   isDualMachine: 0
   spreadRange: 0
 --- !u!114 &5806130470888849857
@@ -203,7 +203,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 5
 --- !u!114 &5806130470888849869
 MonoBehaviour:
   m_ObjectHideFlags: 0

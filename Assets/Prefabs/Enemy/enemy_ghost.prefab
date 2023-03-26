@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e047375fb9f2bfe40b362a947c89bc3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  deathCoinReward: 10
+  moveSpeed: 1
+  deathCoinReward: 3
   Waypoint: {fileID: 0}
 --- !u!114 &4364122770419704414
 MonoBehaviour:

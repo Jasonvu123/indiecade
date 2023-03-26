@@ -43,7 +43,7 @@ public class LevelManager : Singleton<LevelManager>
     private void WaveCompleted()
     {
         CurrentWave++;
-        if (CurrentWave == 4)
+        if (CurrentWave == 10)
             YouWin();
 
         AchievementManager.Instance.AddProgress("Waves1", 1);

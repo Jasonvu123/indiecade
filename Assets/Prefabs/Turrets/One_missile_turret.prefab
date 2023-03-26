@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092b71118b5da07438c8ee41a79c1772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 6
+  attackRange: 8
 --- !u!58 &8760374186678856408
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -114,8 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 8760374188574029051}
-  delayBtwAttacks: 2
-  damage: 6
+  delayBtwAttacks: 2.5
+  damage: 12
 --- !u!114 &8760374186678856413
 MonoBehaviour:
   m_ObjectHideFlags: 0
