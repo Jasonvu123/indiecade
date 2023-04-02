@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2349472104165997292, guid: edbdda4c9a0810443a501a1455e887a7, type: 3}
-  poolSize: 5
+  poolSize: 3
 --- !u!1 &581984735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,7 +1949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnMode: 1
-  enemyCount: 5
+  enemyCount: 3
   delayBtwWaves: 1
   delayBtwSpawns: 1
   minRandomDelay: 1
@@ -1959,6 +1959,7 @@ MonoBehaviour:
   enemyWave3Pooler: {fileID: 572571910}
   enemyWave4Pooler: {fileID: 1200736241}
   enemyWave5Pooler: {fileID: 1991406291}
+  AugmentPanel: {fileID: 0}
 --- !u!4 &705719142
 Transform:
   m_ObjectHideFlags: 0
@@ -4450,7 +4451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3425602453863242782, guid: b006300d7f8f255449fbc26d950b5a9c, type: 3}
-  poolSize: 5
+  poolSize: 3
 --- !u!1 &1514692230
 GameObject:
   m_ObjectHideFlags: 0
@@ -5871,7 +5872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1283197221648782910, guid: 297213ebe0c37bf46a7329693642ebf1, type: 3}
-  poolSize: 5
+  poolSize: 3
 --- !u!1 &1813424334
 GameObject:
   m_ObjectHideFlags: 0

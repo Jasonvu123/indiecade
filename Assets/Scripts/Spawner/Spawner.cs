@@ -33,6 +33,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private ObjectPooler enemyWave4Pooler;
     [SerializeField] private ObjectPooler enemyWave5Pooler;
 
+    [SerializeField] private GameObject AugmentPanel;
+
 
     private float _spawnTimer;
     private int _enemiesSpawned;
@@ -119,6 +121,10 @@ public class Spawner : MonoBehaviour
         {
             enemyCount = 1;
             return enemyWave5Pooler;
+        }
+        if (currentWave > 5 && currentWave <= 6) // 21- 30
+        {
+            AugmentPanel.SetActive(true);
         }
 
 
