@@ -16,6 +16,8 @@ public class Turret : MonoBehaviour
     float zPosition;
     private List<Enemy> _enemies;
 
+    private GameObject hitbox;
+
     private void Start()
     {
         _isBeingPlaced = true;
@@ -25,13 +27,18 @@ public class Turret : MonoBehaviour
         _enemies = new List<Enemy>();
 
         TurretUpgrade = GetComponent<TurretUpgrade>();
+        hitbox = (this.transform.GetChild(0).gameObject).transform.GetChild(0).gameObject;
     }
 
     private void Update()
     {
         if (_isBeingPlaced)
         {
-            
+            if (Input.GetMouseButtonDown(0) && hitbox.GetComponent<TurretHitbox>().isPlaceable)
+            {
+                _isBeingPlaced = false;
+                hitbox.GetComponent<TurretHitbox>().isBeingPlaced = false;
+            }
             Vector3 MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             this.transform.position = new Vector3(MousePosition.x, MousePosition.y, zPosition);
         }
@@ -40,11 +47,6 @@ public class Turret : MonoBehaviour
             GetCurrentEnemyTarget();
             //RotateTowardsTarget();
         }
-    }
-
-    private void OnMouseDown()
-    {
-        _isBeingPlaced = false;
     }
 
     private void GetCurrentEnemyTarget()

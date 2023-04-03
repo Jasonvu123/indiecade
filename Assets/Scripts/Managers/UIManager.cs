@@ -28,8 +28,6 @@ public class UIManager : Singleton<UIManager>
 
     private void Update()
     {
-        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-
         totalCoinsText.text = CurrencySystem.Instance.TotalCoins.ToString();
         lifesText.text = LevelManager.Instance.TotalLives.ToString();
         currentWaveText.text = "Wave "+LevelManager.Instance.CurrentWave;
