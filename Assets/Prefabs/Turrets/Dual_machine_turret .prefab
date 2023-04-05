@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3854514695558681559}
   - component: {fileID: 3854514695558681552}
   - component: {fileID: 3854514695558681563}
+  - component: {fileID: -5867570306268454312}
   m_Layer: 0
   m_Name: 'Dual_machine_turret '
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3854514695558681553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.54, y: -0.6, z: 0}
+  m_LocalPosition: {x: -7.5, y: -0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -114,6 +115,26 @@ MonoBehaviour:
   damageIncremental: 4
   delayReduce: 0.05
   sellPert: 0.5
+--- !u!95 &-5867570306268454312
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3854514695558681553}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0eb04a0d9c4d8f94ea13ad1e4b29f954, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &3854514696109497307
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +241,7 @@ SpriteRenderer:
   m_SortingLayerID: -337568891
   m_SortingLayer: 3
   m_SortingOrder: 5
-  m_Sprite: {fileID: -1168116677, guid: 4b50115892247ef4fbdc573a8fbcd74f, type: 3}
+  m_Sprite: {fileID: -1925291026, guid: e158ff8985d762e41992541eef2fb71b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

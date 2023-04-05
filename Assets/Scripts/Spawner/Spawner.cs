@@ -125,6 +125,7 @@ public class Spawner : MonoBehaviour
         if (currentWave > 5 && currentWave <= 6) // 21- 30
         {
             AugmentPanel.SetActive(true);
+            return null;
         }
 
 

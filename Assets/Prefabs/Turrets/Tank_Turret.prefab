@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3506109916466200385}
   - component: {fileID: 3506109916466200446}
   - component: {fileID: 3506109916466200389}
+  - component: {fileID: 1125760598918496294}
   m_Layer: 0
   m_Name: Tank_Turret
   m_TagString: Untagged
@@ -112,6 +113,26 @@ MonoBehaviour:
   damageIncremental: 6
   delayReduce: 0.2
   sellPert: 0.5
+--- !u!95 &1125760598918496294
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3506109916466200447}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f39fcb5358e0d74480a27c75cb9fa21, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &3506109916655236541
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +247,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3506109917951866894
@@ -302,7 +323,7 @@ SpriteRenderer:
   m_SortingLayerID: -337568891
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_Sprite: {fileID: 359271843, guid: 4b50115892247ef4fbdc573a8fbcd74f, type: 3}
+  m_Sprite: {fileID: -959043471, guid: 2155823344308374e950e2f9a0f8931c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
