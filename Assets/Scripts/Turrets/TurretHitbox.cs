@@ -12,20 +12,38 @@ public class TurretHitbox : MonoBehaviour
 
     private SpriteRenderer hitboxRenderer;
     private int numberOfTurretCollisions;
+    private GameObject altar;
+    private GameObject lightCircle;
 
     private void Start()
     {
+        altar = GameObject.FindGameObjectWithTag("Altar");
+        lightCircle = altar.transform.GetChild(0).gameObject;
+
         hitboxRenderer = this.GetComponent<SpriteRenderer>();
         numberOfTurretCollisions = 0;
+
         hitboxRenderer.color = invalid;
         isBeingPlaced = true;
-        isPlaceable = true;
+        isPlaceable = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if ()
+        if (isBeingPlaced)
+        {
+            if (isWithinAltarArea() && numberOfTurretCollisions == 0)
+            {
+                SetHitboxColor("valid");
+                isPlaceable = true;
+            }
+            else
+            {
+                SetHitboxColor("invalid");
+                isPlaceable = false;
+            }
+        }
 
     }
 
@@ -41,8 +59,6 @@ public class TurretHitbox : MonoBehaviour
             if (collision.gameObject.tag == "TurretHitbox")
             {
                 numberOfTurretCollisions++;
-                hitboxRenderer.color = invalid;
-                isPlaceable = false;
             }
         }
     }
@@ -55,11 +71,40 @@ public class TurretHitbox : MonoBehaviour
             {
                 numberOfTurretCollisions--;
             }
-            if (numberOfTurretCollisions == 0)
-            {
-                hitboxRenderer.color = valid;
-                isPlaceable = true;
-            }
         }
+    }
+
+    public void SetHitboxColor(string color)
+    {
+        if (string.Equals(color, "valid"))
+        {
+            hitboxRenderer.color = valid;
+        }
+        else if (string.Equals(color, "invalid"))
+        {
+            hitboxRenderer.color = invalid;
+        }
+        else if (string.Equals(color, "selected"))
+        {
+            hitboxRenderer.color = selected;
+        }
+    }
+
+    private bool isWithinAltarArea()
+    {
+        Vector3 target = this.transform.position - altar.transform.position;
+        float targetAngle = Vector3.Angle(altar.transform.position, target) * Mathf.Deg2Rad;
+        Vector3 pointToCheck;
+
+        if (this.transform.position.y >= altar.transform.position.y)
+        {
+            pointToCheck = this.transform.position + new Vector3(Mathf.Cos(targetAngle) * hitboxRenderer.size.x / 2, Mathf.Sin(targetAngle) * hitboxRenderer.size.y / 2 + .3f, 0);
+        }
+        else
+        {
+            pointToCheck = this.transform.position + new Vector3(Mathf.Cos(targetAngle) * hitboxRenderer.size.x / 2, Mathf.Sin(targetAngle) * -1 * hitboxRenderer.size.y / 2 - .3f, 0);
+        }
+
+        return Vector3.Distance(altar.transform.position, pointToCheck) <= 6;
     }
 }

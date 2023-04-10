@@ -38,6 +38,7 @@ public class Turret : MonoBehaviour
             {
                 _isBeingPlaced = false;
                 hitbox.GetComponent<TurretHitbox>().isBeingPlaced = false;
+                hitbox.GetComponent<TurretHitbox>().SetHitboxColor("selected");
             }
             Vector3 MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             this.transform.position = new Vector3(MousePosition.x, MousePosition.y, zPosition);
