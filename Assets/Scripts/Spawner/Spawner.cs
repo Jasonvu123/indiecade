@@ -37,8 +37,8 @@ public class Spawner : MonoBehaviour
 
 
     private float _spawnTimer;
-    private int _enemiesSpawned;
-    private int _enemiesRamaining;
+    public int _enemiesSpawned;
+    public int _enemiesRamaining;
     
     private Waypoint _waypoint;
 
@@ -142,7 +142,16 @@ public class Spawner : MonoBehaviour
     
     private void RecordEnemy(Enemy enemy)
     {
+            int currentWave = LevelManager.Instance.CurrentWave;
         _enemiesRamaining--;
+        if(currentWave == 5)
+        {
+                    if (_enemiesRamaining < 3)
+        {
+            OnWaveCompleted?.Invoke();
+            StartCoroutine(NextWave());
+        }
+        }
         if (_enemiesRamaining <= 0)
         {
             OnWaveCompleted?.Invoke();

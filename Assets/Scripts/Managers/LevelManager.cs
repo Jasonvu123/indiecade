@@ -46,10 +46,6 @@ public class LevelManager : Singleton<LevelManager>
     {
         
         CurrentWave++;
-        /*
-        if (CurrentWave == 4)
-            WaveSpawner.enemyCount = 1;
-            */
 
         //AchievementManager.Instance.AddProgress("Waves1", 1);
         // AchievementManager.Instance.AddProgress("Waves2", 1);
