@@ -299,7 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeText: {fileID: 0}
   volumeSlider: {fileID: 0}
-  startGame: SceneCopy1
+  startGame: Level1
 --- !u!4 &747575599
 Transform:
   m_ObjectHideFlags: 0
