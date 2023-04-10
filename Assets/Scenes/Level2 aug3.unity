@@ -1962,6 +1962,8 @@ MonoBehaviour:
   enemyWave4Pooler: {fileID: 1200736241}
   enemyWave5Pooler: {fileID: 1991406291}
   AugmentPanel: {fileID: 0}
+  _enemiesSpawned: 0
+  _enemiesRamaining: 0
 --- !u!4 &705719142
 Transform:
   m_ObjectHideFlags: 0
@@ -6916,7 +6918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bf78f335b8d9745b9cd89fff9a1614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 184105305461146435, guid: b070379305026a94bad75f4edd3306e0, type: 3}
+  prefab: {fileID: 184105305461146435, guid: 55288bfe68ba64b50acc00f6bf2a5c98, type: 3}
   poolSize: 1
 --- !u!1 &2003628816
 GameObject:
