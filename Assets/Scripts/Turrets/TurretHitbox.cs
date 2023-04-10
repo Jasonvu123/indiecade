@@ -105,6 +105,6 @@ public class TurretHitbox : MonoBehaviour
             pointToCheck = this.transform.position + new Vector3(Mathf.Cos(targetAngle) * hitboxRenderer.size.x / 2, Mathf.Sin(targetAngle) * -1 * hitboxRenderer.size.y / 2 - .3f, 0);
         }
 
-        return Vector3.Distance(altar.transform.position, pointToCheck) <= 6;
+        return Vector3.Distance(altar.transform.position, pointToCheck) <= lightCircle.transform.localScale.x / 2 + 1;
     }
 }
