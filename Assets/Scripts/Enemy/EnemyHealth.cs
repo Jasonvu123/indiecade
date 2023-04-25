@@ -11,7 +11,6 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField] private GameObject healthBarPrefab;
     [SerializeField] private Transform barPosition;
-    [SerializeField] private float initialHealth = 10f;
     [SerializeField] private float maxHealth = 10f;
 
     public float CurrentHealth { get; set; }
@@ -23,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
     private void Start()
     {
         CreateHealthBar();
-        CurrentHealth = initialHealth;
+        CurrentHealth = maxHealth;
 
         _enemy = GetComponent<Enemy>();
         _enemyFX = GetComponent<EnemyFX>();
@@ -56,7 +55,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void ResetHealth()
     {
-        CurrentHealth = initialHealth;
+        CurrentHealth = maxHealth;
         _healthBar.fillAmount = 1f;
     }
     
