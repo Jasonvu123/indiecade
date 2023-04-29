@@ -32,8 +32,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3368274515269630639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.0255, y: -1.1525, z: 0}
-  m_LocalScale: {x: 0.8564, y: 0.8427, z: 1}
+  m_LocalPosition: {x: -11.7413, y: -1.8216, z: 0}
+  m_LocalScale: {x: 0.3792139, y: 0.3966589, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1729073969225284990}
@@ -168,7 +168,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarPrefab: {fileID: 7085159743521070294, guid: fb659a9bec055124fab38ba6e61b05b4, type: 3}
   barPosition: {fileID: 1729073969225284990}
-  initialHealth: 45
   maxHealth: 45
 --- !u!61 &2821164190473437032
 BoxCollider2D:

@@ -32,6 +32,11 @@ public class Spawner : MonoBehaviour
     [SerializeField] private ObjectPooler enemyWave3Pooler;
     [SerializeField] private ObjectPooler enemyWave4Pooler;
     [SerializeField] private ObjectPooler enemyWave5Pooler;
+    [SerializeField] private ObjectPooler enemyWave6Pooler;
+    [SerializeField] private ObjectPooler enemyWave7Pooler;
+    [SerializeField] private ObjectPooler enemyWave8Pooler;
+    [SerializeField] private ObjectPooler enemyWave9Pooler;
+    [SerializeField] private ObjectPooler enemyWave10Pooler;
 
     [SerializeField] private GameObject AugmentPanel;
 
@@ -112,22 +117,42 @@ public class Spawner : MonoBehaviour
         {
             return enemyWave3Pooler;
         }
+        
         if (currentWave > 3 && currentWave <= 4) // 21- 30
         {
-            enemyCount = 3;
             return enemyWave4Pooler;
         }
+        
         if (currentWave > 4 && currentWave <= 5) // 21- 30
         {
-            enemyCount = 1;
             return enemyWave5Pooler;
         }
         if (currentWave > 5 && currentWave <= 6) // 21- 30
         {
+            return enemyWave6Pooler;
+        }
+        if (currentWave > 6 && currentWave <= 7) // 21- 30
+        {
+            return enemyWave7Pooler;
+        }
+         if (currentWave > 7 && currentWave <= 8) // 21- 30
+        {
+            return enemyWave8Pooler;
+        }
+        if (currentWave > 8 && currentWave <= 9) // 21- 30
+        {
+            return enemyWave9Pooler;
+        }                              
+        if (currentWave > 9 && currentWave <= 10) // 21- 30
+        {
+            enemyCount = 1;
+            return enemyWave10Pooler;
+        }
+        if (currentWave > 10 && currentWave <= 11) // 21- 30
+        {
             AugmentPanel.SetActive(true);
             return null;
         }
-
 
         return null;
     }
@@ -142,8 +167,10 @@ public class Spawner : MonoBehaviour
     
     private void RecordEnemy(Enemy enemy)
     {
+        
             int currentWave = LevelManager.Instance.CurrentWave;
         _enemiesRamaining--;
+        /*
         if(currentWave == 5)
         {
                     if (_enemiesRamaining < 3)
@@ -153,6 +180,29 @@ public class Spawner : MonoBehaviour
         }
         }
         if (_enemiesRamaining <= 0)
+        {
+            OnWaveCompleted?.Invoke();
+            StartCoroutine(NextWave());
+        }
+        */
+        /*
+        if (_enemiesSpawned == enemyCount)
+        {
+            OnWaveCompleted?.Invoke();
+            StartCoroutine(NextWave());
+        }
+        
+*/
+        if(currentWave >= 9)
+        {
+            if (_enemiesRamaining <= 0)
+            {
+                OnWaveCompleted?.Invoke();
+                StartCoroutine(NextWave());
+            }
+        }
+
+        else if (_enemiesSpawned == enemyCount)
         {
             OnWaveCompleted?.Invoke();
             StartCoroutine(NextWave());

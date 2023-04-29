@@ -52,7 +52,7 @@ public class EnemyAnimations : MonoBehaviour
     {
         if (_enemy == enemy)
         {
-            StartCoroutine(PlayHurt());
+            //StartCoroutine(PlayHurt());
         }
     }
 

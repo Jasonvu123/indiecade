@@ -6,6 +6,8 @@ using UnityEngine;
 public class ObjectPooler : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
+    //[SerializeField] private GameObject enemy2;
+    //[SerializeField] private GameObject enemy3;
     [SerializeField] private int poolSize = 10;
     private List<GameObject> _pool;
     private GameObject _poolContainer;
@@ -18,7 +20,21 @@ public class ObjectPooler : MonoBehaviour
     }
     private void CreatePooler()
     {
+        /*
         for (int i = 0; i < poolSize; i++)
+        {
+            _pool.Add(CreateInstance(enemy1));
+        }
+        for (int i = 0; i < poolSize; i++)
+        {
+            _pool.Add(CreateInstance(enemy2));
+        }
+        for (int i = 0; i < poolSize; i++)
+        {
+            _pool.Add(CreateInstance(enemy3));
+        }
+        */
+                for (int i = 0; i < poolSize; i++)
         {
             _pool.Add(CreateInstance());
         }
@@ -30,16 +46,38 @@ public class ObjectPooler : MonoBehaviour
         newInstance.SetActive(false);
         return newInstance;
     }
+/*
+    private GameObject getPrefab(int i)
+    {
+        if(_pool[i] == enemy1)
+        {
+            return enemy1;
+        }
+        else if(_pool[i] == enemy2)
+        {
+            return enemy2;
+        }
+        else 
+        {
+            return enemy3;
+        }
+    }
+*/
     public GameObject GetInstanceFromPool()
     {
-        for (int i = 0; i < _pool.Count; i++)
+        int i = 0;
+        for (i = 0; i < _pool.Count; i++)
         {
+            
             if (!_pool[i].activeInHierarchy)
             {
                 return _pool[i];
             }
+            
+           // return CreateInstance(getPrefab(i));
         }
         return CreateInstance();
+        
     }
     public static void ReturnToPool(GameObject instance)
     {
