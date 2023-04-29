@@ -45,11 +45,13 @@ public class Spawner : MonoBehaviour
     public int _enemiesSpawned;
     public int _enemiesRamaining;
     
-    private Waypoint _waypoint;
+    [SerializeField] private Waypoint _waypoint;
+    [SerializeField] private Waypoint _waypoint2;
 
     private void Start()
     {
-        _waypoint = GetComponent<Waypoint>();
+     //   _waypoint = GetComponent<Waypoint>();
+      //  _waypoint2 = GetComponent<Waypoint>();
 
         _enemiesRamaining = enemyCount;
     }
@@ -70,9 +72,19 @@ public class Spawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
+        int currentWave = LevelManager.Instance.CurrentWave;
         GameObject newInstance = GetPooler().GetInstanceFromPool();
+
         Enemy enemy = newInstance.GetComponent<Enemy>();
-        enemy.Waypoint = _waypoint;
+        if(currentWave%2 == 0)
+        {
+               enemy.Waypoint = _waypoint2;
+        }
+        else
+        {
+            enemy.Waypoint = _waypoint;
+        }
+        //enemy.Waypoint = _waypoint;
         enemy.ResetEnemy();
 
         enemy.transform.localPosition = transform.position;
