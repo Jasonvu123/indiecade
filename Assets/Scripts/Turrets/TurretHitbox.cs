@@ -10,7 +10,7 @@ public class TurretHitbox : MonoBehaviour
     [SerializeField] public bool isBeingPlaced;
     [SerializeField] public bool isPlaceable;
 
-    private SpriteRenderer hitboxRenderer;
+    public SpriteRenderer hitboxRenderer;
     private int numberOfCollisions;
     private GameObject altar;
     private GameObject lightCircle;
@@ -44,13 +44,21 @@ public class TurretHitbox : MonoBehaviour
                 isPlaceable = false;
             }
         }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition = new Vector3(mousePosition.x, mousePosition.y, this.transform.position.z);
+            //hitboxRenderer.enabled = true;
+            hitboxRenderer.color = selected;
+
+            if (Vector3.Distance(mousePosition, this.transform.position) <= hitboxRenderer.size.x / 2)
+            {
+                this.transform.parent.parent.gameObject.GetComponent<Turret>().SelectTurret();
+            }
+        }
 
     }
 
-    private void OnMouseDown()
-    {
-        hitboxRenderer.color = selected;
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -128,7 +136,7 @@ public class TurretHitbox : MonoBehaviour
                 {
                     pointToCheck = this.transform.position + new Vector3(Mathf.Cos(targetAngle) * hitboxRenderer.size.x / 2, Mathf.Sin(targetAngle) * -1 * hitboxRenderer.size.y / 2 - .3f, 0);
                 }
-                if (Vector3.Distance(snails[i].transform.position, pointToCheck) <= snails[i].transform.localScale.x / 2 + .2f)
+                if (Vector3.Distance(snails[i].transform.position, pointToCheck) <= snails[i].transform.localScale.x / 2 + .12f)
                 {
                     return true;
                 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MachineTurretProjectile : TurretProjectile
 {
     [SerializeField] private bool isDualMachine;
-    [SerializeField] private float spreadRange;
+    [SerializeField] public float spreadRange;
     
     protected override void Update()
     {
@@ -50,5 +50,10 @@ public class MachineTurretProjectile : TurretProjectile
         }
 
         instance.SetActive(true);
+    }
+
+    public void SetDamage(float damage)
+    {
+        this.Damage = damage;
     }
 }

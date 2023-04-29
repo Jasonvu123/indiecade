@@ -7,9 +7,8 @@ public class TurretProjectile : MonoBehaviour
 {
     [SerializeField] protected Transform projectileSpawnPosition;
     [SerializeField] protected float delayBtwAttacks = 2f;
-    [SerializeField] protected float damage = 2f;
+    [SerializeField] public float Damage = 2f;
 
-    public float Damage { get; set; }
     public float DelayPerShot { get; set; }
     
     protected float _nextAttackTime;
@@ -22,7 +21,6 @@ public class TurretProjectile : MonoBehaviour
         _turret = GetComponent<Turret>();
         _pooler = GetComponent<ObjectPooler>();
 
-        Damage = damage;
         DelayPerShot = delayBtwAttacks;
         LoadProjectile();
     }

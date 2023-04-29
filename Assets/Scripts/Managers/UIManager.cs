@@ -9,7 +9,7 @@ public class UIManager : Singleton<UIManager>
 {
     [Header("Panels")]
     [SerializeField] private GameObject turretShopPanel;
-    [SerializeField] private GameObject nodeUIPanel;
+    [SerializeField] private GameObject turretUIPanel;
     [SerializeField] private GameObject achievementPanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject winPanel;
@@ -24,7 +24,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI currentWaveText;
     [SerializeField] private TextMeshProUGUI gameOverTotalCoinsText;
     
-    private Node _currentNodeSelected;
+    private Turret currentTurretSelected;
 
     private void Update()
     {
@@ -77,13 +77,13 @@ public class UIManager : Singleton<UIManager>
 
     public void CloseNodeUIPanel()
     {
-        _currentNodeSelected.CloseAttackRangeSprite();
-        nodeUIPanel.SetActive(false);
+        currentTurretSelected.CloseAttackRangeSprite();
+        turretUIPanel.SetActive(false);
     }
     
     public void UpgradeTurret()
     {
-        _currentNodeSelected.Turret.TurretUpgrade.UpgradeTurret();
+        currentTurretSelected.TurretUpgrade.UpgradeTurret();
         UpdateUpgradeText();
         UpdateTurretLevel();
         UpdateSellValue();
@@ -91,14 +91,14 @@ public class UIManager : Singleton<UIManager>
 
     public void SellTurret()
     {
-        _currentNodeSelected.SellTurret();
-        _currentNodeSelected = null;
-        nodeUIPanel.SetActive(false);
+        currentTurretSelected.SellTurret();
+        currentTurretSelected = null;
+        turretUIPanel.SetActive(false);
     }
     
-    private void ShowNodeUI()
+    private void ShowTurretUI()
     {
-        nodeUIPanel.SetActive(true);
+        turretUIPanel.SetActive(true);
         UpdateUpgradeText();
         UpdateTurretLevel();
         UpdateSellValue();
@@ -106,17 +106,17 @@ public class UIManager : Singleton<UIManager>
 
     private void UpdateUpgradeText()
     {
-        upgradeText.text = _currentNodeSelected.Turret.TurretUpgrade.UpgradeCost.ToString();
+        upgradeText.text = currentTurretSelected.TurretUpgrade.UpgradeCost.ToString();
     }
 
     private void UpdateTurretLevel()
     {
-        turretLevelText.text = $"Level {_currentNodeSelected.Turret.TurretUpgrade.Level}";
+        turretLevelText.text = $"Level {currentTurretSelected.TurretUpgrade.Level}";
     }
 
     private void UpdateSellValue()
     {
-        int sellAmount = _currentNodeSelected.Turret.TurretUpgrade.GetSellValue();
+        int sellAmount = currentTurretSelected.TurretUpgrade.GetSellValue();
         sellText.text = sellAmount.ToString();
     }
     
@@ -126,26 +126,20 @@ public class UIManager : Singleton<UIManager>
         shopButtonPanel.SetActive(!(shopButtonPanel.activeSelf));
     }
 
-    private void NodeSelected(Node nodeSelected)
+    private void TurretSelected(Turret turretSelected)
     {
-        _currentNodeSelected = nodeSelected;
-        if (_currentNodeSelected.IsEmpty())
-        {
-            turretShopPanel.SetActive(true);
-        }
-        else
-        {
-            ShowNodeUI();
-        }
+        currentTurretSelected = turretSelected;
+
+        ShowTurretUI();
     }
     
     private void OnEnable()
     {
-        Node.OnNodeSelected += NodeSelected;
+        Turret.OnTurretSelected += TurretSelected;
     }
 
     private void OnDisable()
     {
-        Node.OnNodeSelected -= NodeSelected;
+        Turret.OnTurretSelected -= TurretSelected;
     }
 }

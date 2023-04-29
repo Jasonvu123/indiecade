@@ -9,6 +9,7 @@ TagManager:
   - Altar
   - Level Object
   - SnailLight
+  - Friend
   layers:
   - Default
   - TransparentFX

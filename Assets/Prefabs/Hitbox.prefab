@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3453024018241517108}
   - component: {fileID: 8650868432347494885}
   - component: {fileID: 5879794400735845557}
+  - component: {fileID: 7684201917550774906}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: TurretHitbox
@@ -103,6 +104,7 @@ MonoBehaviour:
   invalid: {r: 1, g: 0, b: 0.050980393, a: 0.42745098}
   isBeingPlaced: 0
   isPlaceable: 0
+  hitboxRenderer: {fileID: 0}
 --- !u!58 &5879794400735845557
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -119,3 +121,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!50 &7684201917550774906
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2326987580097271885}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -5,19 +5,31 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+    public static Action OnTurretSold;
+    public static Action<Turret> OnTurretSelected;
+
     public enum AnimationState
     {
         Idle,
         Attacking
     }
+    public enum TurretType
+    {
+        Other,
+        Snail,
+        Friend
+    }
 
     [SerializeField] public AnimationState currentState; 
     [SerializeField] private float attackRange = 3f;
+    [SerializeField] private GameObject attackRangeSprite;
+    private float rangeSize;
+    private Vector3 rangeOriginalSize;
 
     public Enemy CurrentEnemyTarget { get; set; }
     public TurretUpgrade TurretUpgrade { get; set; }
     public float AttackRange => attackRange;
-    public bool isSnailTurret;
+    public TurretType turretType;
     
     private bool _gameStarted;
     private bool _isBeingPlaced;
@@ -26,9 +38,14 @@ public class Turret : MonoBehaviour
     private Animator anim;
 
     private GameObject hitbox;
+    public int friendBuffs;
 
     private void Start()
     {
+        if (turretType == TurretType.Friend)
+        {
+            friendBuffs = 0;
+        }
         currentState = AnimationState.Idle;
         _isBeingPlaced = true;
         zPosition = this.transform.position.z;
@@ -39,6 +56,9 @@ public class Turret : MonoBehaviour
 
         TurretUpgrade = GetComponent<TurretUpgrade>();
         hitbox = (this.transform.GetChild(0).gameObject).transform.GetChild(0).gameObject;
+
+        rangeSize = attackRangeSprite.GetComponent<SpriteRenderer>().bounds.size.y;
+        rangeOriginalSize = attackRangeSprite.transform.localScale;
     }
 
     private void Update()
@@ -51,10 +71,14 @@ public class Turret : MonoBehaviour
                 _isBeingPlaced = false;
                 hitbox.GetComponent<TurretHitbox>().isBeingPlaced = false;
                 hitbox.GetComponent<TurretHitbox>().SetHitboxColor("selected");
-                if (isSnailTurret)
+                attackRangeSprite.SetActive(false);
+
+                if (turretType == TurretType.Snail)
                 {
                     transform.GetChild(1).tag = "SnailLight";
                 }
+
+                SetFriendBuffs();
             }
             Vector3 MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             this.transform.position = new Vector3(MousePosition.x, MousePosition.y, zPosition);
@@ -120,6 +144,87 @@ public class Turret : MonoBehaviour
         }
     }
 
+    private void SetFriendBuffs()
+    {
+        GameObject[] friends = GameObject.FindGameObjectsWithTag("Friend");
+        GameObject[] turrets = GameObject.FindGameObjectsWithTag("TurretHitbox");
+        Vector3 target;
+        Vector3 pointToCheck;
+        float targetAngle;
+        Vector3 hitboxSize = hitbox.GetComponent<TurretHitbox>().hitboxRenderer.size;
+
+        for (int i = 0; i < friends.Length; i++)
+        {
+            friends[i].GetComponent<Turret>().ResetFriendBuffs();
+
+            // Set the updated number of buffs for each friend
+            for (int j = 0; j < turrets.Length; j++)
+            {
+                target = friends[i].transform.position - turrets[j].transform.position;
+                targetAngle = Vector3.Angle(turrets[j].transform.position, target) * Mathf.Deg2Rad;
+
+                if (friends[i].transform.position.y >= turrets[j].transform.position.y)
+                {
+                    pointToCheck = friends[i].transform.position + new Vector3(Mathf.Cos(targetAngle) * hitboxSize.x / 2, Mathf.Sin(targetAngle) * hitboxSize.y / 2 + .3f, 0);
+                }
+                else
+                {
+                    pointToCheck = friends[i].transform.position + new Vector3(Mathf.Cos(targetAngle) * hitboxSize.x / 2, Mathf.Sin(targetAngle) * -1 * hitboxSize.y / 2 - .3f, 0);
+                }
+
+                if (Vector3.Distance(turrets[j].transform.position, pointToCheck) <= this.attackRange)
+                {
+                    friends[i].GetComponent<Turret>().AddFriendBuff();
+                }
+            }
+            friends[i].GetComponent<Turret>().RemoveFriendBuff();
+            // Actually buff each friend
+
+            // Large buff at 5 nearby towers
+            if (friends[i].GetComponent<Turret>().friendBuffs >= 5)
+            {
+                friends[i].GetComponent<Turret>().attackRange = 4;
+            }
+            else
+            {
+                friends[i].GetComponent<Turret>().attackRange = 3;
+            }
+
+            // Medium buff at 3 nearby towers
+            if (friends[i].GetComponent<Turret>().friendBuffs >= 3)
+            {
+                friends[i].GetComponent<MachineTurretProjectile>().spreadRange = 15;
+            }
+            else
+            {
+                friends[i].GetComponent<MachineTurretProjectile>().spreadRange = 20;
+            }
+
+            float currentDamage = 4f;
+            // Small buff for each nearby tower
+            for (int j = 0; j < friends[i].GetComponent<Turret>().friendBuffs; j++)
+            {
+                currentDamage += .1f;
+            }
+            friends[i].GetComponent<MachineTurretProjectile>().SetDamage(currentDamage);
+        }
+    }
+
+    public void AddFriendBuff()
+    {
+        friendBuffs++;
+    }
+
+    public void RemoveFriendBuff()
+    {
+        friendBuffs--;
+    }
+
+    public void ResetFriendBuffs()
+    {
+        this.friendBuffs = 0;
+    }
+
     private void OnDrawGizmos()
     {
         if (!_gameStarted)
@@ -128,5 +233,31 @@ public class Turret : MonoBehaviour
         }
         
         Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+
+    public void CloseAttackRangeSprite()
+    {
+        attackRangeSprite.SetActive(false);
+    }
+
+    public void SelectTurret()
+    {
+        ShowTurretInfo();
+        OnTurretSelected?.Invoke(this);
+    }
+
+    public void SellTurret()
+    {
+
+            CurrencySystem.Instance.AddCoins(this.TurretUpgrade.GetSellValue());
+            Destroy(this.gameObject);
+            attackRangeSprite.SetActive(false);
+            OnTurretSold?.Invoke();
+    }
+
+    private void ShowTurretInfo()
+    {
+        attackRangeSprite.SetActive(true);
+        attackRangeSprite.transform.localScale = rangeOriginalSize * AttackRange / (rangeSize / 2);
     }
 }
