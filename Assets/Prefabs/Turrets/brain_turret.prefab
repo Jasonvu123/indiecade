@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 7578150962459150045}
   - component: {fileID: 5403802966010576706}
   m_Layer: 0
-  m_Name: Single_machine_turret
+  m_Name: brain_turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

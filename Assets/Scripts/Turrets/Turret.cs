@@ -17,6 +17,7 @@ public class Turret : MonoBehaviour
     public Enemy CurrentEnemyTarget { get; set; }
     public TurretUpgrade TurretUpgrade { get; set; }
     public float AttackRange => attackRange;
+    public bool isSnailTurret;
     
     private bool _gameStarted;
     private bool _isBeingPlaced;
@@ -50,6 +51,10 @@ public class Turret : MonoBehaviour
                 _isBeingPlaced = false;
                 hitbox.GetComponent<TurretHitbox>().isBeingPlaced = false;
                 hitbox.GetComponent<TurretHitbox>().SetHitboxColor("selected");
+                if (isSnailTurret)
+                {
+                    transform.GetChild(1).tag = "SnailLight";
+                }
             }
             Vector3 MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             this.transform.position = new Vector3(MousePosition.x, MousePosition.y, zPosition);

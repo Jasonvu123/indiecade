@@ -106,8 +106,36 @@ public class TurretHitbox : MonoBehaviour
         {
             pointToCheck = this.transform.position + new Vector3(Mathf.Cos(targetAngle) * hitboxRenderer.size.x / 2, Mathf.Sin(targetAngle) * -1 * hitboxRenderer.size.y / 2 - .3f, 0);
         }
-        Debug.Log(Vector3.Distance(altar.transform.position, pointToCheck));
 
-        return Vector3.Distance(altar.transform.position, pointToCheck) <= lightCircle.transform.localScale.x / 2 + .2f;
+        if (Vector3.Distance(altar.transform.position, pointToCheck) <= lightCircle.transform.localScale.x / 2 + .2f)
+        {
+            return true;
+        }
+        else
+        {
+            GameObject[] snails = GameObject.FindGameObjectsWithTag("SnailLight");
+
+            for (int i = 0; i < snails.Length; i++)
+            {
+                target = this.transform.position - snails[i].transform.position;
+                targetAngle = Vector3.Angle(snails[i].transform.position, target) * Mathf.Deg2Rad;
+
+                if (this.transform.position.y >= snails[i].transform.position.y)
+                {
+                    pointToCheck = this.transform.position + new Vector3(Mathf.Cos(targetAngle) * hitboxRenderer.size.x / 2, Mathf.Sin(targetAngle) * hitboxRenderer.size.y / 2 + .3f, 0);
+                }
+                else
+                {
+                    pointToCheck = this.transform.position + new Vector3(Mathf.Cos(targetAngle) * hitboxRenderer.size.x / 2, Mathf.Sin(targetAngle) * -1 * hitboxRenderer.size.y / 2 - .3f, 0);
+                }
+                if (Vector3.Distance(snails[i].transform.position, pointToCheck) <= snails[i].transform.localScale.x / 2 + .2f)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
+
 }
