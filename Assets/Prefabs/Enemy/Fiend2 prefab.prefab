@@ -32,8 +32,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184105305461146435}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.4095, y: -2.541, z: 0}
-  m_LocalScale: {x: -2.6179628, y: 2.6200569, z: 1}
+  m_LocalPosition: {x: -8.8212, y: -2.9634, z: 0}
+  m_LocalScale: {x: -1.8430458, y: 1.976309, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5167512374032683369}
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.8
-  deathCoinReward: 50
+  deathCoinReward: 5
   Waypoint: {fileID: 0}
 --- !u!114 &-3527394471506689974
 MonoBehaviour:
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarPrefab: {fileID: 7085159743521070294, guid: fb659a9bec055124fab38ba6e61b05b4, type: 3}
   barPosition: {fileID: 5167512374032683369}
-  maxHealth: 250
+  maxHealth: 100
 --- !u!114 &-3383118871102889728
 MonoBehaviour:
   m_ObjectHideFlags: 0

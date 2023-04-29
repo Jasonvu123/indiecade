@@ -5,18 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class AugmentController : MonoBehaviour
 {
-   public void AugmentOne()
+   public void HomeScreen()
     {
-        SceneManager.LoadScene("Level2 aug1");
+        SceneManager.LoadScene("Title");
     }
 
-    public void AugmentTwo()
+    public void Level2()
     {
-        SceneManager.LoadScene("Level2 aug2");
+        SceneManager.LoadScene("Remake Level 2");
     }
 
-    public void AugmentThree()
+    public void Level3()
     {
-        SceneManager.LoadScene("Level2 aug3");
+        SceneManager.LoadScene("Remake Level 3");
     }
 }
