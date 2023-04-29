@@ -112,6 +112,10 @@ public class UIManager : Singleton<UIManager>
     private void UpdateTurretLevel()
     {
         turretLevelText.text = $"Level {currentTurretSelected.TurretUpgrade.Level}";
+        if (currentTurretSelected.TurretUpgrade.Level == 3)
+        {
+            currentTurretSelected.currentState = Turret.AnimationState.Upgrade_Idle;
+        }
     }
 
     private void UpdateSellValue()

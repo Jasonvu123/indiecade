@@ -12,9 +12,31 @@ public class TankTurretProjectile : TurretProjectile
                 && _turret.CurrentEnemyTarget.EnemyHealth.CurrentHealth > 0)
             {
                 FireProjectile(_turret.CurrentEnemyTarget);
+
+                if (GetComponent<Turret>().currentState == Turret.AnimationState.Idle)
+                {
+                    GetComponent<Turret>().currentState = Turret.AnimationState.Attacking;
+                }
+                else if (GetComponent<Turret>().currentState == Turret.AnimationState.Upgrade_Idle)
+                {
+                    GetComponent<Turret>().currentState = Turret.AnimationState.Upgrade_Attacking;
+                }
             }
             
+
+
             _nextAttackTime = Time.time + delayBtwAttacks;
+        }
+        else
+        {
+            if (GetComponent<Turret>().currentState == Turret.AnimationState.Attacking)
+            {
+                GetComponent<Turret>().currentState = Turret.AnimationState.Idle;
+            }
+            else if (GetComponent<Turret>().currentState == Turret.AnimationState.Upgrade_Attacking)
+            {
+                GetComponent<Turret>().currentState = Turret.AnimationState.Upgrade_Idle;
+            }
         }
     }
 

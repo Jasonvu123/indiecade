@@ -130,12 +130,12 @@ GameObject:
   - component: {fileID: 8760374186678856410}
   - component: {fileID: 8760374186678856411}
   - component: {fileID: 8760374186678856408}
-  - component: {fileID: 8760374186678856412}
   - component: {fileID: 8760374186678856413}
   - component: {fileID: 8760374186678856415}
   - component: {fileID: 4088954145108196748}
   - component: {fileID: 4124455401518383797}
   - component: {fileID: 7685392938589901836}
+  - component: {fileID: 841957013537167827}
   m_Layer: 0
   m_Name: eye_turret
   m_TagString: Untagged
@@ -174,7 +174,7 @@ MonoBehaviour:
   currentState: 0
   attackRange: 8
   attackRangeSprite: {fileID: 3279780565858554679}
-  turretType: 0
+  turretType: 1
   friendBuffs: 0
 --- !u!58 &8760374186678856408
 CircleCollider2D:
@@ -192,21 +192,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 8
---- !u!114 &8760374186678856412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8760374186678856409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850dbc4887dc23540b9b57184d7d70f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileSpawnPosition: {fileID: 8760374188574029051}
-  delayBtwAttacks: 2.2
-  Damage: 14
 --- !u!114 &8760374186678856413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +316,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &841957013537167827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760374186678856409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6fff3f35ac69a4fba47eb98cdd55c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawnPosition: {fileID: 8760374188574029051}
+  delayBtwAttacks: 2.2
+  Damage: 18
 --- !u!1 &8760374187520413265
 GameObject:
   m_ObjectHideFlags: 0

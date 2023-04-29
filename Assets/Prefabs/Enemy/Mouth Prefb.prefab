@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.85
-  deathCoinReward: 5
+  deathCoinReward: 6
   Waypoint: {fileID: 0}
 --- !u!114 &-7357967170766724847
 MonoBehaviour:
@@ -168,7 +168,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarPrefab: {fileID: 7085159743521070294, guid: fb659a9bec055124fab38ba6e61b05b4, type: 3}
   barPosition: {fileID: 1729073969225284990}
-  initialHealth: 30
   maxHealth: 30
 --- !u!61 &2821164190473437032
 BoxCollider2D:

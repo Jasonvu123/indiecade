@@ -55,7 +55,7 @@ MonoBehaviour:
   currentState: 0
   attackRange: 3
   attackRangeSprite: {fileID: 6805347123191048233}
-  turretType: 2
+  turretType: 3
   friendBuffs: 0
 --- !u!114 &3854514695558681558
 MonoBehaviour:

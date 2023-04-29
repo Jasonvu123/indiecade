@@ -11,11 +11,14 @@ public class Turret : MonoBehaviour
     public enum AnimationState
     {
         Idle,
-        Attacking
+        Attacking,
+        Upgrade_Idle,
+        Upgrade_Attacking
     }
     public enum TurretType
     {
-        Other,
+        Brain,
+        Eye,
         Snail,
         Friend
     }
@@ -94,6 +97,19 @@ public class Turret : MonoBehaviour
                     break;
                 case AnimationState.Attacking:
                     anim.SetInteger("animState", 1);
+                    break;
+                case AnimationState.Upgrade_Idle:
+                    if (turretType == TurretType.Friend)
+                    {
+                        anim.SetInteger("animState", 0);
+                    }
+                    else
+                    {
+                        anim.SetInteger("animState", 2);
+                    }
+                    break;
+                case AnimationState.Upgrade_Attacking:
+                    anim.SetInteger("animState", 3);
                     break;
             }
 
