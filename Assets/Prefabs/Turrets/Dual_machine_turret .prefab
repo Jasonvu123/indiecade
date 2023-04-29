@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3854514695558681552}
   - component: {fileID: 3854514695558681563}
   - component: {fileID: -5867570306268454312}
+  - component: {fileID: -4151002496754768304}
   m_Layer: 0
   m_Name: 'Dual_machine_turret '
   m_TagString: Untagged
@@ -135,6 +136,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!50 &-4151002496754768304
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3854514695558681553}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3854514696109497307
 GameObject:
   m_ObjectHideFlags: 0

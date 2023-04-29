@@ -11,7 +11,7 @@ public class TurretHitbox : MonoBehaviour
     [SerializeField] public bool isPlaceable;
 
     private SpriteRenderer hitboxRenderer;
-    private int numberOfTurretCollisions;
+    private int numberOfCollisions;
     private GameObject altar;
     private GameObject lightCircle;
 
@@ -21,7 +21,7 @@ public class TurretHitbox : MonoBehaviour
         lightCircle = altar.transform.GetChild(0).gameObject;
 
         hitboxRenderer = this.GetComponent<SpriteRenderer>();
-        numberOfTurretCollisions = 0;
+        numberOfCollisions = 0;
 
         hitboxRenderer.color = invalid;
         isBeingPlaced = true;
@@ -33,7 +33,7 @@ public class TurretHitbox : MonoBehaviour
     {
         if (isBeingPlaced)
         {
-            if (isWithinAltarArea() && numberOfTurretCollisions == 0)
+            if (isWithinAltarArea() && numberOfCollisions == 0)
             {
                 SetHitboxColor("valid");
                 isPlaceable = true;
@@ -56,9 +56,9 @@ public class TurretHitbox : MonoBehaviour
     {
         if (isBeingPlaced)
         {
-            if (collision.gameObject.tag == "TurretHitbox")
+            if (collision.gameObject.CompareTag("TurretHitbox") || collision.gameObject.CompareTag("Level Object"))
             {
-                numberOfTurretCollisions++;
+                numberOfCollisions++;
             }
         }
     }
@@ -67,9 +67,9 @@ public class TurretHitbox : MonoBehaviour
     {
         if (isBeingPlaced)
         {
-            if (collision.gameObject.tag == "TurretHitbox")
+            if (collision.gameObject.CompareTag("TurretHitbox") || collision.gameObject.CompareTag("Level Object"))
             {
-                numberOfTurretCollisions--;
+                numberOfCollisions--;
             }
         }
     }
@@ -96,6 +96,8 @@ public class TurretHitbox : MonoBehaviour
         float targetAngle = Vector3.Angle(altar.transform.position, target) * Mathf.Deg2Rad;
         Vector3 pointToCheck;
 
+        
+
         if (this.transform.position.y >= altar.transform.position.y)
         {
             pointToCheck = this.transform.position + new Vector3(Mathf.Cos(targetAngle) * hitboxRenderer.size.x / 2, Mathf.Sin(targetAngle) * hitboxRenderer.size.y / 2 + .3f, 0);
@@ -104,7 +106,8 @@ public class TurretHitbox : MonoBehaviour
         {
             pointToCheck = this.transform.position + new Vector3(Mathf.Cos(targetAngle) * hitboxRenderer.size.x / 2, Mathf.Sin(targetAngle) * -1 * hitboxRenderer.size.y / 2 - .3f, 0);
         }
+        Debug.Log(Vector3.Distance(altar.transform.position, pointToCheck));
 
-        return Vector3.Distance(altar.transform.position, pointToCheck) <= lightCircle.transform.localScale.x / 2 + 1;
+        return Vector3.Distance(altar.transform.position, pointToCheck) <= lightCircle.transform.localScale.x / 2 + .2f;
     }
 }
