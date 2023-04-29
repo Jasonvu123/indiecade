@@ -16,9 +16,14 @@ public class MachineTurretProjectile : TurretProjectile
                 Vector3 dirToTarget = _turret.CurrentEnemyTarget.transform.position 
                     - transform.position;
                 FireProjectile(dirToTarget);
+                GetComponent<Turret>().currentState = Turret.AnimationState.Attacking;
             }
             
             _nextAttackTime = Time.time + delayBtwAttacks;
+        }
+        else
+        {
+            GetComponent<Turret>().currentState = Turret.AnimationState.Idle;
         }
     }
 
