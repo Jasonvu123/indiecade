@@ -1977,7 +1977,7 @@ GameObject:
   - component: {fileID: 572571909}
   - component: {fileID: 572571910}
   m_Layer: 0
-  m_Name: Wave 3
+  m_Name: skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2011,7 +2011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2349472104165997292, guid: edbdda4c9a0810443a501a1455e887a7, type: 3}
-  poolSize: 3
+  poolSize: 7
 --- !u!1 &581984735
 GameObject:
   m_ObjectHideFlags: 0
@@ -2901,14 +2901,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82856ff21d12d6d4eac0e5c8983133f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnMode: 1
-  enemyCount: 3
-  delayBtwWaves: 1
+  spawnMode: 0
+  enemyCount: 7
+  delayBtwWaves: 0
   delayBtwSpawns: 1
-  minRandomDelay: 1
-  maxRandomDelay: 2
+  minRandomDelay: 0
+  maxRandomDelay: 0
   enemyWave1Pooler: {fileID: 1809287173}
-  enemyWave2Pooler: {fileID: 1471852089}
+  enemyWave2Pooler: {fileID: 1809287173}
   enemyWave3Pooler: {fileID: 572571910}
   enemyWave4Pooler: {fileID: 1200736241}
   enemyWave5Pooler: {fileID: 1991406291}
@@ -2923,7 +2923,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705719140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.98, y: 0, z: 0}
+  m_LocalPosition: {x: -10.98, y: -0.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2943,10 +2943,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points:
-  - {x: 3, y: 5, z: 0}
-  - {x: 9, y: -5, z: 0}
-  - {x: 15, y: 5, z: 0}
-  - {x: 21, y: 0, z: 0}
+  - {x: 6.54766, y: 0.041656315, z: 0}
+  - {x: 6.571169, y: 3.071948, z: 0}
+  - {x: 3.8307319, y: 3.0246162, z: 0}
+  - {x: 3.8284502, y: 5.355798, z: 0}
+  - {x: 10.346356, y: 5.3557982, z: 0}
+  - {x: 10.399262, y: 3.0284076, z: 0}
+  - {x: 9.362448, y: 2.9928455, z: 0}
+  - {x: 9.40489, y: -3.840465, z: 0}
+  - {x: 16.917288, y: -3.8192434, z: 0}
+  - {x: 16.97026, y: -0.08442891, z: 0}
+  - {x: 21.55101, y: -0.05798292, z: 0}
+  - {x: 21.607101, y: 4.514491, z: 0}
+  - {x: 13.225765, y: 4.5890017, z: 0}
+  - {x: 13.244836, y: 1.0609084, z: 0}
 --- !u!1 &740092906
 GameObject:
   m_ObjectHideFlags: 0
@@ -3261,8 +3271,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797456156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.293, y: 0, z: 0}
-  m_LocalScale: {x: 1.3567151, y: 1.1375, z: 1}
+  m_LocalPosition: {x: 0.0059, y: -0.1143, z: 0}
+  m_LocalScale: {x: 2.472807, y: 2.158743, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1514692232}
@@ -3309,7 +3319,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ea11f5d351b0bfb4999bf9116e39d227, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 33238e680a8988142b0d4b1ef3f10d87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4126,8 +4136,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035897001}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.54, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.94, y: -0, z: 0}
+  m_LocalScale: {x: 0.8924, y: 0.8857, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1141389094}
@@ -4436,7 +4446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1141389094
 Transform:
   m_ObjectHideFlags: 0
@@ -4680,7 +4690,7 @@ GameObject:
   - component: {fileID: 1200736240}
   - component: {fileID: 1200736241}
   m_Layer: 0
-  m_Name: Wave 4
+  m_Name: slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4714,7 +4724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3368274515269630639, guid: 4f44e1681730b1543ac952df9d2afb2b, type: 3}
-  poolSize: 3
+  poolSize: 7
 --- !u!1 &1239740238
 GameObject:
   m_ObjectHideFlags: 0
@@ -5373,7 +5383,7 @@ GameObject:
   - component: {fileID: 1471852088}
   - component: {fileID: 1471852089}
   m_Layer: 0
-  m_Name: Wave 2
+  m_Name: eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5407,7 +5417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3425602453863242782, guid: b006300d7f8f255449fbc26d950b5a9c, type: 3}
-  poolSize: 3
+  poolSize: 7
 --- !u!1 &1514692230
 GameObject:
   m_ObjectHideFlags: 0
@@ -6973,7 +6983,7 @@ GameObject:
   - component: {fileID: 1809287172}
   - component: {fileID: 1809287173}
   m_Layer: 0
-  m_Name: Wave 1
+  m_Name: ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7007,7 +7017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1283197221648782910, guid: 297213ebe0c37bf46a7329693642ebf1, type: 3}
-  poolSize: 3
+  poolSize: 7
 --- !u!1 &1813424334
 GameObject:
   m_ObjectHideFlags: 0
@@ -8016,7 +8026,7 @@ GameObject:
   - component: {fileID: 1991406290}
   - component: {fileID: 1991406291}
   m_Layer: 0
-  m_Name: Wave 5 Boss
+  m_Name: boss fiend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
