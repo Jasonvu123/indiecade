@@ -72,4 +72,9 @@ public class MachineTurretProjectile : TurretProjectile
     {
         this.Damage = damage;
     }
+
+    public float GetDamage()
+    {
+        return this.Damage;
+    }
 }

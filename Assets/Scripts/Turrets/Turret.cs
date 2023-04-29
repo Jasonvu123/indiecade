@@ -28,6 +28,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private GameObject attackRangeSprite;
     private float rangeSize;
     private Vector3 rangeOriginalSize;
+    public float baseAttack;
 
     public Enemy CurrentEnemyTarget { get; set; }
     public TurretUpgrade TurretUpgrade { get; set; }
@@ -45,6 +46,7 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
+        baseAttack = 4f;
         if (turretType == TurretType.Friend)
         {
             friendBuffs = 0;
@@ -88,7 +90,12 @@ public class Turret : MonoBehaviour
         }
         else
         {
-            GetCurrentEnemyTarget();
+            if (turretType == TurretType.Friend)
+            {
+                baseAttack = GetComponent<MachineTurretProjectile>().GetDamage();
+            }
+
+                GetCurrentEnemyTarget();
 
             switch (currentState)
             {
@@ -113,7 +120,7 @@ public class Turret : MonoBehaviour
                     break;
             }
 
-            //RotateTowardsTarget();
+            RotateTowardsTarget();
         }
     }
 
@@ -134,9 +141,15 @@ public class Turret : MonoBehaviour
         {
             return;
         }
-        Vector3 targetPos = CurrentEnemyTarget.transform.position - transform.position;
-        float angle = Vector3.SignedAngle(transform.up, targetPos, transform.forward);
-        transform.Rotate(0f, 0f, angle);
+
+        if (CurrentEnemyTarget.transform.position.x <= transform.position.x)
+        {
+            transform.localScale = new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1 * Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -216,7 +229,7 @@ public class Turret : MonoBehaviour
                 friends[i].GetComponent<MachineTurretProjectile>().spreadRange = 20;
             }
 
-            float currentDamage = 4f;
+            float currentDamage = friends[i].GetComponent<Turret>().baseAttack;
             // Small buff for each nearby tower
             for (int j = 0; j < friends[i].GetComponent<Turret>().friendBuffs; j++)
             {

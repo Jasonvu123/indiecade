@@ -6,7 +6,7 @@ using UnityEngine;
 public class TurretProjectile : MonoBehaviour
 {
     [SerializeField] protected Transform projectileSpawnPosition;
-    [SerializeField] protected float delayBtwAttacks = 2f;
+    [SerializeField] public float delayBtwAttacks = 2f;
     [SerializeField] public float Damage = 2f;
 
     public float DelayPerShot { get; set; }

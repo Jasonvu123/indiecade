@@ -205,7 +205,7 @@ public class Spawner : MonoBehaviour
         }
         
 */
-        if(currentWave >= 9)
+        if(currentWave == 8)
         {
             if (_enemiesRamaining <= 0)
             {
