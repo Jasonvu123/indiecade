@@ -5,26 +5,37 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+    public enum AnimationState
+    {
+        Idle,
+        Attacking
+    }
+
+    [SerializeField] public AnimationState currentState; 
     [SerializeField] private float attackRange = 3f;
 
     public Enemy CurrentEnemyTarget { get; set; }
     public TurretUpgrade TurretUpgrade { get; set; }
     public float AttackRange => attackRange;
+    public bool isSnailTurret;
     
     private bool _gameStarted;
     private bool _isBeingPlaced;
     float zPosition;
     private List<Enemy> _enemies;
+    private Animator anim;
 
     private GameObject hitbox;
 
     private void Start()
     {
+        currentState = AnimationState.Idle;
         _isBeingPlaced = true;
         zPosition = this.transform.position.z;
 
         _gameStarted = true;
         _enemies = new List<Enemy>();
+        anim = GetComponent<Animator>();
 
         TurretUpgrade = GetComponent<TurretUpgrade>();
         hitbox = (this.transform.GetChild(0).gameObject).transform.GetChild(0).gameObject;
@@ -34,11 +45,16 @@ public class Turret : MonoBehaviour
     {
         if (_isBeingPlaced)
         {
+            GetComponent<SpriteRenderer>().sortingOrder = -(1 * (int)Math.Round(transform.position.y)) + 6;
             if (Input.GetMouseButtonDown(0) && hitbox.GetComponent<TurretHitbox>().isPlaceable)
             {
                 _isBeingPlaced = false;
                 hitbox.GetComponent<TurretHitbox>().isBeingPlaced = false;
                 hitbox.GetComponent<TurretHitbox>().SetHitboxColor("selected");
+                if (isSnailTurret)
+                {
+                    transform.GetChild(1).tag = "SnailLight";
+                }
             }
             Vector3 MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             this.transform.position = new Vector3(MousePosition.x, MousePosition.y, zPosition);
@@ -46,6 +62,17 @@ public class Turret : MonoBehaviour
         else
         {
             GetCurrentEnemyTarget();
+
+            switch (currentState)
+            {
+                case AnimationState.Idle:
+                    anim.SetInteger("animState", 0);
+                    break;
+                case AnimationState.Attacking:
+                    anim.SetInteger("animState", 1);
+                    break;
+            }
+
             //RotateTowardsTarget();
         }
     }

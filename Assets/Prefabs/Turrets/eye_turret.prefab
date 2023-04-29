@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4124455401518383797}
   - component: {fileID: 7685392938589901836}
   m_Layer: 0
-  m_Name: One_missile_turret
+  m_Name: eye_turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
